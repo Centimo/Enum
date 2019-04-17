@@ -33,7 +33,7 @@ int main()
   std::cout << temp_value_name << std::endl;
 
 
-  temp_value = My_enum::get_value_by_name("asfasf");  //error: temp_value is constexpr
+  temp_value = My_enum::get_value_by_name("asfasf");
   auto new_temp = My_enum_2::get_value_by_name("second");
 
   std::cout << new_temp.get_name() << std::endl;
