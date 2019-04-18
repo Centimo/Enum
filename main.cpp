@@ -25,40 +25,34 @@ int main()
 {
   std::cout << "Hello, World!" << std::endl;
 
-  auto temp_value_2 = My_enum::first;
-  temp_value_2 = My_enum::second;
   auto temp_value = My_enum::second;
-  auto temp_value_3 = My_enum_2::second;
-  auto temp_value_name = temp_value.get_name();
-  std::cout << temp_value_name << std::endl;
+  std::cout << temp_value.get_name() << std::endl;
 
-
-  temp_value = My_enum::get_value_by_name("asfasf");
   auto new_temp = My_enum_2::get_value_by_name("second");
-
   std::cout << new_temp.get_name() << std::endl;
 
 
-  switch(temp_value)
+  for (const auto& value : My_enum{})
   {
-    case My_enum::first:
+    switch (value)
     {
-      std::cout << "First" << std::endl;
-      break;
-    }
-    case My_enum::second:
-    {
-      std::cout << "Second" << std::endl;
-      break;
-    }
-    case My_enum::third:
-    {
-      std::cout << "Third" << std::endl;
-      break;
+      case My_enum::first:
+      {
+        std::cout << "First" << std::endl;
+        break;
+      }
+      case My_enum::second:
+      {
+        std::cout << "Second" << std::endl;
+        break;
+      }
+      case My_enum::third:
+      {
+        std::cout << "Third" << std::endl;
+        break;
+      }
     }
   }
-
-
 
   return 0;
 }

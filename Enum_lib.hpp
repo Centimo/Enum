@@ -152,6 +152,16 @@ namespace Enum_lib
                                       Constexpr_string<symbols...>::value,
                                       Constexpr_string<symbols...>::size);
     }
+
+    const auto begin() const
+    {
+      return _values.begin();
+    }
+
+    const auto end() const
+    {
+      return _values.end();
+    }
   };
 }
 
