@@ -149,9 +149,9 @@ namespace Enum_lib
     template <typename Lambda_type>
     static constexpr Enum_value<enum_type_id> make_enum_value_const(Lambda_type function)
     {
-      constexpr auto Name = get_constexpr_string(function);
-      Enum_list::template push<decltype(get_enum_value_const<enum_type_id, Counter::next() - 1>(Name))>();
-      return Enum_value<enum_type_id>(Counter::value(), Name.value, Name.size);
+      constexpr auto name = get_constexpr_string(function);
+      Enum_list::template push<decltype(get_enum_value_const<enum_type_id, Counter::next() - 1>(name))>();
+      return Enum_value<enum_type_id>(Counter::value(), name.value, name.size);
     }
 
     // gcc extension
