@@ -31,6 +31,12 @@ int main()
   auto new_temp = My_enum_2::get_value_by_name("second");
   std::cout << new_temp.get_name() << std::endl;
 
+  auto search_result = My_enum::find_value_by_name("asfasfasd");
+  if (search_result)
+  {
+    std::cout << search_result.value().get_name() << std::endl;
+  }
+
 
   for (const auto& value : My_enum{})
   {

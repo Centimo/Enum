@@ -134,6 +134,17 @@ namespace Enum_lib
       return _values[_values_ids_by_names.at(name)];
     }
 
+    static std::optional<Enum_value<enum_type_id> > find_value_by_name(const std::string& name)
+    {
+      auto search_result = _values_ids_by_names.find(name);
+      if (search_result == _values_ids_by_names.end())
+      {
+        return std::nullopt;
+      }
+
+      return _values[_values_ids_by_names.at(name)];
+    }
+
     // Standard-correct variant
     template <typename Lambda_type>
     static constexpr Enum_value<enum_type_id> make_enum_value_const(Lambda_type function)
