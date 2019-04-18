@@ -68,19 +68,11 @@ namespace atch { namespace {
   struct Global_count;
   using Global_meta_counter = Meta_counter<Global_count>;
 
-
-
-  //template<template<class> class TT, class C = atch::Meta_counter<class GlobalCount>>
-  //using create_new = TT<Global_tag<C::next ()>>;
-
   template <template<size_t> class TT, size_t index = Global_meta_counter::next ()>
   using Create_new = TT<index>;
 
   template <template<size_t> class TT, typename Counter_type, size_t index = Counter_type::next ()>
   using Create_new_by_counter = TT<index>;
-
-  //template <template<class> class TT, class Tag_class = Create_new<Global_tag>>
-  //using Create_new_meta = TT<Tag_class>;
 }}
 
 
