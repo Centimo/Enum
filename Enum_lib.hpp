@@ -150,16 +150,18 @@ namespace Enum_lib
     static constexpr Enum_value<enum_type_id> make_enum_value_const(Lambda_type function)
     {
       constexpr auto name = get_constexpr_string(function);
-      Enum_list::template push<decltype(get_enum_value_const<enum_type_id, Counter::next() - 1>(name))>();
-      return Enum_value<enum_type_id>(Counter::value(), name.value, name.size);
+      constexpr size_t counter_value = Counter::next() - 1;
+      Enum_list::template push<decltype(get_enum_value_const<enum_type_id, counter_value>(name))>();
+      return Enum_value<enum_type_id>(counter_value, name.value, name.size);
     }
 
     // gcc extension
     template <char... symbols>
     static constexpr Enum_value<enum_type_id> make_enum_value_const(Constexpr_string<symbols...>)
     {
-      Enum_list::template push<Enum_value_const<enum_type_id, Counter::next() - 1, symbols...> >();
-      return Enum_value<enum_type_id>(Counter::value() - 1,
+      constexpr size_t counter_value = Counter::next() - 1;
+      Enum_list::template push<Enum_value_const<enum_type_id, counter_value, symbols...> >();
+      return Enum_value<enum_type_id>(counter_value,
                                       Constexpr_string<symbols...>::value,
                                       Constexpr_string<symbols...>::size);
     }
