@@ -46,10 +46,23 @@ namespace Enum_lib
       return _enum_value_id;
     }
 
+    constexpr size_t get_enum_id() const
+    {
+      return enum_type_id;
+    }
+
     auto get_name() const
     {
       return _enum_value_name;
     }
+
+    template <size_t second_enum_id>
+    friend constexpr bool operator == (const Enum_value& first, const Enum_value<second_enum_id>& second)
+    {
+      static_assert(first.get_enum_id() == second_enum_id, "WARNING! Two different enums.");
+      return size_t(first) == size_t(second) && first.get_name() == second.get_name();
+    }
+
 
   private:
     size_t _enum_value_id;
