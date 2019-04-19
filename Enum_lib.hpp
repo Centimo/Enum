@@ -108,6 +108,10 @@ namespace Enum_lib
     using Counter = atch::Meta_counter<Enum_tag<enum_type_id> >;
     using Enum_list = atch::meta_list<Enum_tag<enum_type_id> >;
 
+  public:
+
+    using Enum_value_type = Enum_value<enum_type_id>;
+
 
   private:
 
@@ -141,6 +145,11 @@ namespace Enum_lib
 
 
   public:
+
+    static constexpr size_t size()
+    {
+      return Counter::value();
+    }
 
     static Enum_value<enum_type_id> get_value_by_name(const std::string& name)
     {
@@ -187,6 +196,18 @@ namespace Enum_lib
     const auto end() const
     {
       return _values.end();
+    }
+  };
+}
+
+namespace std
+{
+  template<size_t enum_type_id>
+  struct hash<Enum_lib::Enum_value<enum_type_id> >
+  {
+    size_t operator()(const Enum_lib::Enum_value<enum_type_id>& value) const noexcept
+    {
+      return enum_type_id;
     }
   };
 }
