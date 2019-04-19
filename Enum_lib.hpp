@@ -15,9 +15,11 @@
 #include "Constexpr_string.hpp"
 
 
-#define ADD_ENUM_VALUE(name) static inline constexpr auto name = make_enum_value_const(#name##_const)
-
+// standard-correct variant
 #define ADD_ENUM_VALUE_S(name) static inline constexpr auto name = make_enum_value_const([](){ return #name;})
+
+// provided by gcc (clang) extension
+#define ADD_ENUM_VALUE(name) static inline constexpr auto name = make_enum_value_const(#name##_const)
 
 
 namespace Enum_lib
