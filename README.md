@@ -1,4 +1,5 @@
-Класс для замены стандартных enum'ов. Позволяет создавать перечисления с именованными значениями, искать значение по имени, итерироваться по всему перечислению.
-Примеры можно посмотреть в main.cpp. 
+Collection of metaprogramming snippets based on Filip Roséen's work (http://b.atch.se/)
+**Enum**: class of convenient enumerations. Allows you to iterate, name elements, and search by name.
+**Meta_base**: stores the list of inheritors in the form std::variant, which allows implementing static polymorphism without using pointers.
 
-Основан на работе Filip Roséen, взятой отсюда: [http://b.atch.se/](http://b.atch.se/). Большое ему спасибо за чёрномагическое кунг-фу.
+Some samples in main.cpp
